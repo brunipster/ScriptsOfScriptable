@@ -1,2 +1,2 @@
 # ScriptsOfScriptable
-Scripts created while i´m sit on wc
+Scripts of Scriptable created while i´m sit on wc
