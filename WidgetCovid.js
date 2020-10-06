@@ -33,12 +33,12 @@ var sizeStack = {
 
 var sizeCases = {
   width: ((sizeStack.width / 2) - sizeStack.spacing) - (sizeStack.padding / 2),
-  height: sizeStack.height - (padding / 2),
+  height: sizeStack.height - (sizeStack.padding*2) - sizeStack.spacing,
 }
-
+console.log(sizeCases.height)
 var sizeBoxes = {
   width: sizeCases.width,
-  height: (sizeCases.height / 2) - sizeStack.spacing,
+  height: (sizeCases.height / 2) - (sizeStack.spacing / 2),
 }
 
 let totalData = await requestTotalData.loadJSON()
@@ -70,11 +70,10 @@ stack.size = new Size(sizeStack.width, sizeStack.height)
 
   let leftStack = stack.addStack()
   leftStack.size = new Size(sizeCases.width, sizeCases.height)
+  leftStack.spacing = sizeStack.spacing
   leftStack.centerAlignContent()
-    
-    let caseStack = leftStack.addStack()
-    caseStack.size = new Size(sizeCases.width, sizeCases.height)
-    caseStack.backgroundColor = new Color(theme.casesBackground)
+  leftStack.cornerRadius = sizeStack.cornerRadius
+  leftStack.backgroundColor = new Color(theme.casesBackground)
 
   let rightStack = stack.addStack()
   rightStack.size = new Size(sizeCases.width, sizeCases.height)
