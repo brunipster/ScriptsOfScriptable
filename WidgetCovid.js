@@ -23,12 +23,22 @@ recoveredBackground: "7BB22E"
   recoveredBackground: "7BB22E"
 }
 
-var size = {
+var sizeStack = {
   width: 360,
   height: 170,
-  padding: 20,
-  spacing:10,
+  spacing: 8,
+  padding: 4,
   cornerRadius: 25
+}
+
+var sizeCases = {
+  width: ((sizeStack.width / 2) - sizeStack.spacing) - (sizeStack.padding / 2),
+  height: sizeStack.height - (padding / 2),
+}
+
+var sizeBoxes = {
+  width: sizeCases.width,
+  height: (sizeCases.height / 2) - sizeStack.spacing,
 }
 
 let totalData = await requestTotalData.loadJSON()
@@ -51,36 +61,36 @@ gradient.colors = [
 widget.backgroundGradient = gradient
 
 let stack = widget.addStack()
-stack.cornerRadius = size.cornerRadius
-stack.spacing = size.spacing
-stack.layoutVertically()
+stack.cornerRadius = sizeStack.cornerRadius
+stack.spacing = sizeStack.spacing
+stack.layoutHorizontally()
 stack.centerAlignContent()
-stack.setPadding(size.padding.repeat(4))
-stack.size = new Size(size.width, size.height)
+stack.setPadding(sizeStack.padding,sizeStack.padding,sizeStack.padding,sizeStack.padding)
+stack.size = new Size(sizeStack.width, sizeStack.height)
 
-  let topStack = stack.addStack()
-  topStack.size = new Size(size.width - (size.padding * 2), (size.height / 2) - size.spacing)
-  topStack.centerAlignContent()
+  let leftStack = stack.addStack()
+  leftStack.size = new Size(sizeCases.width, sizeCases.height)
+  leftStack.centerAlignContent()
     
-    let caseStack = topStack.addStack()
-    caseStack.size = new Size(size.width - (size.padding * 2), (size.height / 2) - size.spacing)
-    caseStack.backgroundColor = Color(theme.casesBackground)
+    let caseStack = leftStack.addStack()
+    caseStack.size = new Size(sizeCases.width, sizeCases.height)
+    caseStack.backgroundColor = new Color(theme.casesBackground)
 
-  let bottomStack = stack.addStack()
-  bottomStack.size = new Size(size.width - (size.padding * 2), (size.height / 2) - size.spacing)
-  bottomStack.centerAlignContent()
-  bottomStack.spacing = size.spacing
-  bottomStack.layoutHorizontally()
+  let rightStack = stack.addStack()
+  rightStack.size = new Size(sizeCases.width, sizeCases.height)
+  rightStack.centerAlignContent()
+  rightStack.spacing = sizeStack.spacing
+  rightStack.layoutVertically()
 
-    let deathStack = bottomStack.addStack()
-    deathStack.size = new Size((size.width - (size.padding * 2))/2, (size.height / 2) - size.spacing)
-    deathStack.backgroundColor = Color(theme.deathBackground)
-    deathStack.cornerRadius = size.cornerRadius
+    let deathStack = rightStack.addStack()
+    deathStack.size = new Size(sizeBoxes.width, sizeBoxes.height)
+    deathStack.backgroundColor = new Color(theme.deathBackground)
+    deathStack.cornerRadius = sizeStack.cornerRadius
 
-    let recoveredStack = bottomStack.addStack()
-    recoveredStack.size = new Size((size.width - (size.padding * 2))/2, (size.height / 2) - size.spacing)
-    recoveredStack.backgroundColor = Color(theme.recoveredBackground)
-    recoveredStack.cornerRadius = size.cornerRadius
+    let recoveredStack = rightStack.addStack()
+    recoveredStack.size = new Size(sizeBoxes.width, sizeBoxes.height)
+    recoveredStack.backgroundColor = new Color(theme.recoveredBackground)
+    recoveredStack.cornerRadius = sizeStack.cornerRadius
 
 // let head = stack.addText(totalCases)
 // let font = new Font("Arial", 30)
