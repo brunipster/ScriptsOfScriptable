@@ -27,7 +27,7 @@ var sizeStack = {
   width: 360,
   height: 170,
   spacing: 8,
-  padding: 4,
+  padding: 10,
   cornerRadius: 25
 }
 
@@ -78,7 +78,7 @@ stack.size = new Size(sizeStack.width, sizeStack.height)
   leftStack.setPadding(sizeStack.padding,sizeStack.padding,sizeStack.padding,sizeStack.padding)
   
       let numberTotalCases = leftStack.addText(totalCases)
-      let fontTotalCasesNumber = new Font("Arial", 24)
+      let fontTotalCasesNumber = new Font("Arial", 26)
       numberTotalCases.font = fontTotalCasesNumber
       numberTotalCases.textColor = new Color("#fff")
 //       numberTotalCases.addSpacer(12)
@@ -100,20 +100,30 @@ stack.size = new Size(sizeStack.width, sizeStack.height)
     deathStack.backgroundColor = new Color(theme.deathBackground)
     deathStack.cornerRadius = sizeStack.cornerRadius
 
+      let numberTotalDeahts = deathStack.addText(totalDeaths)
+      let fontTotalDeahtsNumber = new Font("Arial", 20)
+      numberTotalDeahts.font = fontTotalDeahtsNumber
+      numberTotalDeahts.textColor = new Color("#fff")
+
+      let textTotalDeahts = deathStack.addText("Total de Fallecidos")
+      let fontTotalDeahtsText = new Font("Arial", 16)
+      textTotalDeahts.font = fontTotalDeahtsText
+      textTotalDeahts.textColor = new Color("#fff")
+
     let recoveredStack = rightStack.addStack()
     recoveredStack.size = new Size(sizeBoxes.width, sizeBoxes.height)
     recoveredStack.backgroundColor = new Color(theme.recoveredBackground)
     recoveredStack.cornerRadius = sizeStack.cornerRadius
 
-// let head = stack.addText(totalCases)
-// let font = new Font("Arial", 30)
-// head.font = font
-// head.textColor = new Color("#fff")
-// totaltopStack.addSpacer(30)
-// let cases = stack.addText('Total de Casos de Covid en el Peru') 
-// let font2 = new Font("Courier-Oblique", 15) 
-// cases.font = font2 
-// cases.textColor = new Color('#fff')
+      let numberTotalRecovered = deathStack.addText(totalRecovered)
+      let fontTotalRecoveredNumber = new Font("Arial", 20)
+      numberTotalRecovered.font = fontTotalRecoveredNumber
+      numberTotalRecovered.textColor = new Color("#fff")
+      
+      let textTotalRecovered = deathStack.addText("Total de Recuperados")
+      let fontTotalRecoveredText = new Font("Arial", 16)
+      textTotalRecovered.font = fontTotalRecoveredText
+      textTotalRecovered.textColor = new Color("#fff")
 
 Script.setWidget(widget)
 
