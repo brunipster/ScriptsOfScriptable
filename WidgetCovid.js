@@ -74,6 +74,18 @@ stack.size = new Size(sizeStack.width, sizeStack.height)
   leftStack.centerAlignContent()
   leftStack.cornerRadius = sizeStack.cornerRadius
   leftStack.backgroundColor = new Color(theme.casesBackground)
+  
+      let numberTotalCases = leftStack.addText(totalCases)
+      let fontTotalCasesNumber = new Font("Arial", 24)
+      numberTotalCases.font = fontTotalCasesNumber
+      numberTotalCases.textColor = new Color("#fff")
+      numberTotalCases.addSpacer(12)
+
+      let textTotalCases = leftStack.addText("Total de Infectados")
+      let fontTotalCasesText = new Font("Arial", 16)
+      textTotalCases.font = fontTotalCasesText
+      textTotalCases.textColor = new Color("#fff")
+      textTotalCases.addSpacer(12)
 
   let rightStack = stack.addStack()
   rightStack.size = new Size(sizeCases.width, sizeCases.height)
