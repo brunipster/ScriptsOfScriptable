@@ -1,3 +1,5 @@
+let requestTotalData = new Request('https://covid-19.dataflowkit.com/v1/peru') 
+
 var isDarkMode = Device.isUsingDarkAppearance()
 
 var color = args.widgetParameter
@@ -29,22 +31,31 @@ var widget = new ListWidget()
 let stack = widget.addStack()
 
 let caseStack = stack.addStack()
-caseStack.size = new Size(100, 100)
+caseStack.size = new Size(320, 65)
 caseStack.backgroundColor = Color.blue()
-caseStack.addSpacer(10)
+caseStack.cornerRadius = 25
+caseStack.setPadding(0, 10, 0, 10)
+caseStack.centerAlignContent()
 
-let deathStack = stack.addStack()
-deathStack.size = new Size(100, 100)
+let bottomStack = stack.addStack()
+bottomStack.size = new Size(320, 65)
+bottomStack.setPadding(0, 10, 0, 10)
+bottomStack.centerAlignContent()
+
+let deathStack = bottomStack.addStack()
+deathStack.size = new Size(150, 65)
 deathStack.backgroundColor = Color.red()
-deathStack.addSpacer(10)
+deathStack.cornerRadius = 25
 
-let recoveredStack = stack.addStack()
-recoveredStack.size = new Size(100, 100)
-recoveredStack.backgroundColor = Color.blue()
-recoveredStack.spacing = 100
+let recoveredStack = bottomStack.addStack()
+recoveredStack.size = new Size(150, 65)
+recoveredStack.backgroundColor = Color.yellow()
+recoveredStack.cornerRadius = 25
 
-stack.spacing = 10
-stack.layoutHorizontally()
+bottomStack.spacing = 10
+bottomStack.layoutHorizontally()
+
+stack.layoutVertically()
 
 // let head = stack.addText(totalCases)
 // let font = new Font("Arial", 30)
@@ -55,10 +66,10 @@ stack.layoutHorizontally()
 // let font2 = new Font("Courier-Oblique", 15) 
 // cases.font = font2 
 // cases.textColor = new Color('#fff')
-stack.cornerRadius = 24 
+stack.centerAlignContent()
+stack.cornerRadius = 10
+stack.spacing = 10
 stack.setPadding(20, 20, 20, 20)
-
-
 stack.size = new Size(360, 170)
 
 Script.setWidget(widget)
